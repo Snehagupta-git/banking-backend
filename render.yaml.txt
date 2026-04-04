@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: banking-backend
+    env: java
+    plan: free
+    buildCommand: "./mvnw clean install"
+    startCommand: "java -jar target/*.jar"
+    envVars:
+      - key: SPRING_DATASOURCE_URL
+        value: jdbc:postgresql://dpg-d78lkkedqaus73d2df3g-a.oregon-postgres.render.com:5432/dpg-d78lkkedqaus73d2df3g
+      - key: SPRING_DATASOURCE_USERNAME
+        value: banking_db_62aa_user
+      - key: SPRING_DATASOURCE_PASSWORD
+        value: UA2CaepjciJyzRa16GhOtLgAOMjdLOYZ
+      - key: SPRING_JPA_HIBERNATE_DDL_AUTO
+        value: update
