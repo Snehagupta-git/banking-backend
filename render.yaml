@@ -4,7 +4,7 @@ services:
     plan: free
     runtime: docker
     buildCommand: "./mvnw clean install"
-    startCommand: "java -jar target/*.jar"
+    
     envVars:
       - key: SPRING_DATASOURCE_URL
         value: jdbc:postgresql://dpg-d78lkkedqaus73d2df3g-a.oregon-postgres.render.com:5432/dpg-d78lkkedqaus73d2df3g
