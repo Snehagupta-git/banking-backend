@@ -1,7 +1,7 @@
 package com.banking.app.config;
 
 import java.util.List;
-
+import org.springframework.http.HttpMethod;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -31,13 +31,10 @@ public class SecurityConfig {
         http
         .cors(cors -> cors.configurationSource(request -> {
             var corsConfig = new org.springframework.web.cors.CorsConfiguration();
-            corsConfig.setAllowedOrigins(List.of(
-        "http://127.0.0.1:5500",
-        "http://localhost:5500",
-        "http://localhost:3000"
-    ));
-
             
+
+            corsConfig.setAllowedOriginPatterns(List.of("*"));
+
             corsConfig.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
             corsConfig.setAllowedHeaders(List.of("*"));
             corsConfig.setAllowCredentials(true);
@@ -48,6 +45,7 @@ public class SecurityConfig {
                     .sessionCreationPolicy(org.springframework.security.config.http.SessionCreationPolicy.STATELESS)
                 )
             .authorizeHttpRequests(auth -> auth
+                .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 .requestMatchers("/api/auth/**").permitAll() // allow auth APIs
                 .requestMatchers("/api/accounts/me/**").authenticated()
 
