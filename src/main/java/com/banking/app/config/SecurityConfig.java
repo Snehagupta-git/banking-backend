@@ -33,7 +33,7 @@ public class SecurityConfig {
             var corsConfig = new org.springframework.web.cors.CorsConfiguration();
             
 
-            corsConfig.setAllowedOriginPatterns(List.of("*"));
+            corsConfig.setAllowedOriginPatterns(List.of("https://cute-griffin-51ef11.netlify.app/"));
 
             corsConfig.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
             corsConfig.setAllowedHeaders(List.of("*"));
